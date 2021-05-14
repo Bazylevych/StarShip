@@ -1,21 +1,56 @@
+.App {
+  padding: 0 10px;
+}
+
+.cards {
+  padding: 15px 10px;
+}
 .card {
   background-color: #bf360c;
   text-align: center;
-  width: 280px;
-  height: 325px;
+  height: 300px;
   border: 2px ridge #fafafa;
+}
+
+.card .card-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card-deck {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  align-items: center;
+  grid-template-columns:
+    minmax(200px, 300px)
+    minmax(200px, 300px)
+    minmax(200px, 300px)
+    minmax(200px, 300px);
+
+  justify-content: center;
+
   padding: 10px;
 }
 
 .button-group {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  padding: 20px 600px;
+  padding-bottom: 20px;
+}
+.button-container {
+  text-align: center;
+}
+
+@media only screen and (max-width: 1024px) {
+  .card-deck {
+    grid-template-columns:
+      minmax(200px, 250px)
+      minmax(200px, 250px)
+      minmax(200px, 250px);
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .card-deck {
+    grid-template-columns:
+      minmax(150px, 200px)
+      minmax(150px, 200px);
+  }
 }

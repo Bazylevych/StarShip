@@ -12,19 +12,8 @@ export default function CardShip(props: any) {
   } = props
 
   return (
-    <div style={{ padding: '15px 10px' }}>
-      <Card
-        body
-        inverse
-        className="card"
-        // style={{
-        //   backgroundColor: '#bf360c',
-        //   textAlign: 'center',
-        //   width: '280px',
-        //   height: '325px',
-        //   border: '2px ridge #fafafa',
-        // }}
-      >
+    <div className="cards">
+      <Card body inverse className="card">
         <CardTitle>{name}</CardTitle>
         <CardText>{model}</CardText>
         <CardText>Star Ship Class: {starship_class}</CardText>

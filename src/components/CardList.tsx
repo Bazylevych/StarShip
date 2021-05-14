@@ -18,23 +18,11 @@ export default function CardList() {
   async function getShip(link: string = 'https://swapi.dev/api/starships/') {
     try {
       const res = await axios.get(link)
-      console.log(res.data)
+
       setState({
         next: res.data.next,
         previous: res.data.previous,
-        results: res.data.results.map((i: any) => {
-          return (
-            <CardShip
-              name={i.name}
-              model={i.model}
-              starship_class={i.starship_class}
-              hyperdrive_rating={i.hyperdrive_rating}
-              passengers={i.passengers}
-              manufacturer={i.manufacturer}
-              key={i.name}
-            />
-          )
-        }),
+        results: res.data.results,
       })
     } catch (e) {
       console.log(e)
@@ -47,41 +35,39 @@ export default function CardList() {
 
   return (
     <>
-      <CardDeck
-        className="card-deck"
-        // style={{
-        //   display: 'grid',
-        //   gridTemplateColumns: '1fr 1fr 1fr 1fr',
-        //   alignItems: 'top',
-        //   padding: '10px',
-        // }}
-      >
-        {state.results}
+      <CardDeck className="card-deck">
+        {state.results.map((i: any) => {
+          return (
+            <CardShip
+              name={i.name}
+              model={i.model}
+              starship_class={i.starship_class}
+              hyperdrive_rating={i.hyperdrive_rating}
+              passengers={i.passengers}
+              manufacturer={i.manufacturer}
+              key={i.name}
+            />
+          )
+        })}
       </CardDeck>
-      <ButtonGroup
-        className="button-group"
-        // style={{
-        //   position: 'relative',
-        //   display: 'flex',
-        //   justifyContent: 'center',
-        //   padding: '20px 600px',
-        // }}
-      >
-        <Button
-          disabled={!state.previous}
-          color="danger"
-          onClick={() => getShip(state.previous)}
-        >
-          Prev
-        </Button>
-        <Button
-          disabled={!state.next}
-          color="danger"
-          onClick={() => getShip(state.next)}
-        >
-          Next
-        </Button>
-      </ButtonGroup>
+      <div className="button-container">
+        <ButtonGroup className="button-group">
+          <Button
+            disabled={!state.previous}
+            color="danger"
+            onClick={() => getShip(state.previous)}
+          >
+            Prev
+          </Button>
+          <Button
+            disabled={!state.next}
+            color="danger"
+            onClick={() => getShip(state.next)}
+          >
+            Next
+          </Button>
+        </ButtonGroup>
+      </div>
     </>
   )
 }
