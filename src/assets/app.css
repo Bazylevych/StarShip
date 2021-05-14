@@ -1,0 +1,21 @@
+.card {
+  background-color: #bf360c;
+  text-align: center;
+  width: 280px;
+  height: 325px;
+  border: 2px ridge #fafafa;
+}
+
+.card-deck {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  align-items: center;
+  padding: 10px;
+}
+
+.button-group {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 20px 600px;
+}
